@@ -116,6 +116,9 @@ includeAllProjects("platform-sdk/platform-apps/demos")
 
 includeAllProjects("platform-sdk/platform-apps/tests")
 
+// Base applications
+includeAllProjects("platform-sdk/base-apps/")
+
 fun include(name: String, path: String) {
     include(name)
     project(name).projectDir = File(rootDir, path)
