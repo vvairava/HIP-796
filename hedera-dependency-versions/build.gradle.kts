@@ -110,4 +110,5 @@ moduleInfo {
     version("tuweni.units", tuweniVersion)
     version("uk.org.webcompere.systemstubs.core", systemStubsVersion)
     version("uk.org.webcompere.systemstubs.jupiter", systemStubsVersion)
+    version("io.undertow.server", "2.3.10.Final")
 }
