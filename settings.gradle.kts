@@ -117,7 +117,7 @@ includeAllProjects("platform-sdk/platform-apps/demos")
 includeAllProjects("platform-sdk/platform-apps/tests")
 
 // Base applications
-includeAllProjects("platform-sdk/base-apps/")
+include(":swirlds-base-sample", "platform-sdk/base-apps/swirlds-base-sample")
 
 fun include(name: String, path: String) {
     include(name)
