@@ -30,7 +30,7 @@ public class PropertyFileConfigSource extends AbstractFileConfigSource {
 
     /**
      * Creates a new instance based on a file by using the {@link ConfigSourceOrdinalConstants#PROPERTY_FILE_ORDINAL}
-     * ordinal
+     * ordinal.
      *
      * @param filePath the properties file
      * @throws IOException if the file can not loaded or parsed
@@ -40,7 +40,7 @@ public class PropertyFileConfigSource extends AbstractFileConfigSource {
     }
 
     /**
-     * Creates a new instance based on a file
+     * Creates a new instance based on a file.
      *
      * @param filePath the properties file
      * @param ordinal  the ordinal of the config source
