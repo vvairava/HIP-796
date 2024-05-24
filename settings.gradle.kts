@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-pluginManagement { includeBuild("build-logic") }
+pluginManagement { includeBuild("gradle/plugins") }
 
-plugins { id("com.hedera.hashgraph.settings") }
+plugins { id("com.hedera.gradle.settings") }
 
 // "BOM" with versions of 3rd party dependencies
 include("hedera-dependency-versions")
+
+// Project to aggregate code coverage data for the whole repository into one report
+include(":reports", "gradle/reports")
 
 // Hedera Node projects
 include(":app", "hedera-node/hedera-app")
@@ -117,6 +120,12 @@ include(":swirlds-benchmarks", "platform-sdk/swirlds-benchmarks")
 
 include(":swirlds-platform-test", "platform-sdk/swirlds-unit-tests/core/swirlds-platform-test")
 
+include(":swirlds-pairings-api", "platform-sdk/swirlds-pairings-api")
+
+include(":swirlds-tss-api", "platform-sdk/swirlds-tss-api")
+
+include(":swirlds-tss-impl", "platform-sdk/swirlds-tss-impl")
+
 // Platform demo/test applications
 includeAllProjects("platform-sdk/platform-apps/demos")
 
@@ -161,6 +170,6 @@ dependencyResolutionManagement {
         version("grpc-proto", "1.45.1")
         version("hapi-proto", hapiProtoVersion)
 
-        plugin("pbj", "com.hedera.pbj.pbj-compiler").version("0.8.7")
+        plugin("pbj", "com.hedera.pbj.pbj-compiler").version("0.8.9")
     }
 }
