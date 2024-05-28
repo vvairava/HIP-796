@@ -137,6 +137,8 @@ module com.swirlds.platform.core {
     requires transitive com.swirlds.metrics.api;
     requires transitive com.swirlds.state.api;
     requires transitive com.swirlds.virtualmap;
+    requires transitive com.swirlds.tss;
+    requires transitive com.swirlds.pairings.api;
     requires transitive com.fasterxml.jackson.annotation;
     requires transitive com.fasterxml.jackson.databind;
     requires transitive com.hedera.node.hapi;

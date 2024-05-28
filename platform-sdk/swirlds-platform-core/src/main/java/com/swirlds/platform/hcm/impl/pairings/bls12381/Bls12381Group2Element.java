@@ -16,9 +16,9 @@
 
 package com.swirlds.platform.hcm.impl.pairings.bls12381;
 
-import com.swirlds.platform.hcm.api.pairings.FieldElement;
-import com.swirlds.platform.hcm.api.pairings.Group;
-import com.swirlds.platform.hcm.api.pairings.GroupElement;
+import com.swirlds.pairings.api.FieldElement;
+import com.swirlds.pairings.api.Group;
+import com.swirlds.pairings.api.GroupElement;
 import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**

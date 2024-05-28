@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-package com.swirlds.platform.hcm.impl.pairings.bls12381;
+package com.swirlds.pairings.bls12381.impl;
 
-import com.swirlds.pairings.api.BilinearPairing;
-import com.swirlds.pairings.api.Field;
-import com.swirlds.pairings.api.Group;
-import com.swirlds.pairings.api.GroupElement;
-import com.swirlds.pairings.api.PairingResult;
+import com.swirlds.pairings.api.*;
 import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**

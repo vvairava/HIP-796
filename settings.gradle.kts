@@ -122,9 +122,9 @@ include(":swirlds-platform-test", "platform-sdk/swirlds-unit-tests/core/swirlds-
 
 include(":swirlds-pairings-api", "platform-sdk/swirlds-pairings-api")
 
-include(":swirlds-tss-api", "platform-sdk/swirlds-tss-api")
+include(":swirlds-tss", "platform-sdk/swirlds-tss")
 
-include(":swirlds-tss-impl", "platform-sdk/swirlds-tss-impl")
+include(":swirlds-pairings-bls12381", "platform-sdk/swirlds-pairings-bls12381")
 
 // Platform demo/test applications
 includeAllProjects("platform-sdk/platform-apps/demos")

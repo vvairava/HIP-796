@@ -16,8 +16,8 @@
 
 package com.swirlds.platform.hcm.impl.pairings.bls12381;
 
-import com.swirlds.platform.hcm.api.pairings.Field;
-import com.swirlds.platform.hcm.api.pairings.FieldElement;
+import com.swirlds.pairings.api.Field;
+import com.swirlds.pairings.api.FieldElement;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.math.BigInteger;
 
