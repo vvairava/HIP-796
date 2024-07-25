@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hedera.cryptography.signaturescheme.api;
+package com.hedera.cryptography.tss.api;
 
 /**
  * An enum to clarify which group public keys and signatures are in, for a given

@@ -6,7 +6,6 @@
 module com.hedera.cryptography.tss {
     requires static transitive com.github.spotbugs.annotations;
 
-    exports com.hedera.cryptography.signaturescheme.api;
-    exports com.hedera.cryptography.pairings.api;
+    requires transitive com.hedera.cryptography.pairings.signatures;
     exports com.hedera.cryptography.tss.api;
 }

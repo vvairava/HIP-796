@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hedera.cryptography.pairings.api;
+package com.hedera.cryptography.tss.api;
 
 /**
  * An enumeration of supported pairing curves.

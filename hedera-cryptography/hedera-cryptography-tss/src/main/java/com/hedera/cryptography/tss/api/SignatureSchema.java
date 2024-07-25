@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.hedera.cryptography.signaturescheme.api;
+package com.hedera.cryptography.tss.api;
 
-import com.hedera.cryptography.pairings.api.Curve;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.util.Objects;
 

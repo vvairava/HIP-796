@@ -24,8 +24,10 @@ plugins { id("org.gradlex.java-module-dependencies") }
 // that module group here.
 javaModuleDependencies {
     moduleNamePrefixToGroup.put("com.", "com.swirlds")
+    moduleNamePrefixToGroup.put("com.hedera.cryptography.tss.", "com.hedera.cryptography.tss")
     moduleNamePrefixToGroup.put("com.hedera.node.", "com.hedera.hashgraph")
     moduleNamePrefixToGroup.put("com.hedera.storage.", "com.hedera.storage.blocknode")
     moduleNameToGA.put("com.hedera.evm", "com.hedera.evm:hedera-evm")
     moduleNameToGA.put("com.hedera.evm.impl", "com.hedera:hedera-evm-impl")
+    moduleNameToGA.put("com.hedera.cryptography.pairings.signatures", "com.hedera.cryptography:hedera-cryptography-pairings-signatures")
 }

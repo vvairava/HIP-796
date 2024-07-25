@@ -19,9 +19,6 @@ package com.hedera.cryptography.tss.api;
 import static java.util.Objects.isNull;
 import static java.util.Objects.requireNonNull;
 
-import com.hedera.cryptography.signaturescheme.api.PairingPrivateKey;
-import com.hedera.cryptography.signaturescheme.api.PairingPublicKey;
-import com.hedera.cryptography.signaturescheme.api.SignatureSchema;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.util.ArrayList;
 import java.util.Comparator;

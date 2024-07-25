@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hedera.cryptography.signaturescheme.api;
+package com.hedera.cryptography.tss.api;
 /**
  *  A Prototype implementation of PairingPublicKey.
  *  This class will live in a different project once the implementation of the pairings-signature-library is completed.

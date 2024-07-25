@@ -16,9 +16,5 @@
 
 plugins { id("com.hedera.gradle.platform") }
 
-group = "com.hedera.cryptography"
+group = "com.hedera.cryptography.tss"
 
-testModuleInfo {
-    requires("org.junit.jupiter.api")
-    requires("org.mockito")
-}

@@ -16,10 +16,10 @@
 
 package com.hedera.cryptography.tss.impl;
 
-import com.hedera.cryptography.signaturescheme.api.PairingPrivateKey;
-import com.hedera.cryptography.signaturescheme.api.PairingPublicKey;
-import com.hedera.cryptography.signaturescheme.api.PairingSignature;
-import com.hedera.cryptography.signaturescheme.api.SignatureSchema;
+import com.hedera.cryptography.tss.api.PairingPrivateKey;
+import com.hedera.cryptography.tss.api.PairingPublicKey;
+import com.hedera.cryptography.tss.api.PairingSignature;
+import com.hedera.cryptography.tss.api.SignatureSchema;
 import com.hedera.cryptography.tss.api.TssMessage;
 import com.hedera.cryptography.tss.api.TssParticipantDirectory;
 import com.hedera.cryptography.tss.api.TssPrivateShare;
