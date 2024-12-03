@@ -26,6 +26,7 @@ import com.hedera.hapi.node.base.ResponseCodeEnum;
 import com.hedera.hapi.node.contract.ContractFunctionResult;
 import com.hedera.hapi.node.scheduled.SchedulableTransactionBody;
 import com.hedera.node.app.service.contract.impl.exec.systemcontracts.FullResult;
+import com.hedera.node.app.service.contract.impl.exec.utils.SystemContractMethod;
 import com.hedera.node.app.service.contract.impl.records.ContractCallStreamBuilder;
 import com.hedera.pbj.runtime.io.buffer.Bytes;
 import edu.umd.cs.findbugs.annotations.NonNull;
@@ -37,7 +38,7 @@ import org.hyperledger.besu.evm.precompile.PrecompiledContract.PrecompileContrac
  */
 public interface Call {
     /**
-     * Encapsulates the result of a call to the HTS system contract. There are two elements,
+     * Encapsulates the result of a call to the HAS/HSS/HTS system contract. There are two elements,
      * <ol>
      *     <li>The "full result" of the call, including both its EVM-standard {@link PrecompileContractResult}
      *     and gas requirement (which is often difficult to compute without executing the call); as well as
@@ -161,4 +162,9 @@ public interface Call {
     default SchedulableTransactionBody asSchedulableDispatchIn() {
         throw new UnsupportedOperationException("Needs scheduleNative() support");
     }
+
+
+    void setSystemContractMethod(@NonNull final SystemContractMethod systemContractMethod);
+
+    SystemContractMethod getSystemContractMethod();
 }
