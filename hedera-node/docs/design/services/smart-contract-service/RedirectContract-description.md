@@ -1,8 +1,13 @@
 # The "Redirect" Contract Template for proxying calls to Tokens, Accounts, and Scheduled Transactions
 
-The "redirect" contracts (aka proxy contracts) implement the feature where you can call a Hedera
-token or account or scheduled transaction directly at their address and they _act_ as if you made
-the corresponding contract call.
+The "redirect" contracts (aka proxy contracts, aka facade contracts) implement the feature where you
+can call a Hedera token or account or scheduled transaction directly at their address and they _act_
+as if you made the corresponding contract call.
+
+* There are three terms currently in use for the same concept: "facade", "redirect", and "proxy".
+  All three terms appear in symbols in the code, at this time.  Perhaps we'll standardize on one
+  of those terms and have a teeny refactoring sometime in the future.  But for the purposes of this
+  document: They're synonyms used interchangeably.
 
 There is one redirect contract which is parameterized as a _template_ with the addresses of the
 HTS, HAS, and HSS system contracts, and with the correct "redirect" method selector.
@@ -28,18 +33,27 @@ b81bb93ff19a238b64736f6c634300080b0033
 ```
 
 Where:
+
 * `RRRR` will be replaced by the (2 byte) precompile contract address
+
   * `0167`: HTS ([HIP-218](https://hips.hedera.com/hip/hip-218))
+
   * `016a`: HAS ([HIP-906](https://hips.hedera.com/hip/hip-906))
+
   * `016b`: HSS ([HIP-755](https://hips.hedera.com/hip/hip-755))
+
 * `SSSSSSSS` will be replaced by the (4 byte) redirect method selector
+
   * `618dc65e`: `redirectForToken`
+
   * `e4cbd3a7`: `redirectForAddress`
+
   * `5c3889ca`: `redirectForScheduleTxn`
+
 * `fefefefefefefefefefefefefefefefefefefefe` will be replaced by the (20 byte) EVM address of the token
   being redirected, i.e., the HTS token kind's account-num alias (aka: long-zero).
 
-(THe templating in the source code isn't exactly organized this way, but this is the effect.)
+(The templating in the source code isn't exactly organized this way, but this is the effect.)
 
 ## Solidity
 
@@ -60,21 +74,25 @@ function __function_selector__() public nonPayable {
 the same _flow_ for technical reasons, but very similarly.)
 
 1. `FrameBuilder.buildInitialFrameWith` - build a `MessageFrame for this transaction, if it is
-  a contract _call_ then ....
-1. `FrameBuilder.finishedAsCall` - finish building the `MessageFrame` for this message call; need to get the
-  bytecode to execute, so ...
-1. `ProxyEvmAccount.getEvmCode` - get the bytecode to be executed for this call to an account;
-  if the selector is one of the methods that is proxyed _and_ the account id given exists then
-  return the customized redirect contract for this account address; otherwise return the empty
-  bytecode (which lets the EVM do the "successful noop" call of a nonexistent contract)
-1. `DispatchingEvmFrameState.getAccountRedirectCode` - given account id return the bytecode
-  for the redirect bytecode specialized for this account
-1. From this point it behaves like any other contract call, and the bytecode is executed
-1. In that bytecode it will do a delegate call to the HAS system contract, passing along the
-  original calldata, and return the result returned from the system contract.  Thus: It is
-  behaves as a proxy/intermediary contract shimming the call to an _account address_ to a call
-  to the _system contract address_.
-  
+   a contract _call_ then:
+2. `FrameBuilder.finishedAsCall` - finish building the `MessageFrame` for this message call; need to get the
+   bytecode to execute
+3. `ProxyEvmAccount.getEvmCode` - get the bytecode to be executed for this call to an account;
+   if the selector is one of the methods that is proxied _and_ the account id given exists then
+   return the customized redirect contract for this account address; otherwise return the empty
+   bytecode (which lets the EVM do the "successful noop" call of a nonexistent contract)
+   * _n.b._: "_and_ the account id given exists": Only for HAS and HSS at this time, not yet for HTS.
+4. `DispatchingEvmFrameState.getAccountRedirectCode` - given account id return the bytecode
+   for the redirect bytecode specialized for this account
+5. From this point it behaves like any other contract call, and the bytecode is executed
+6. In that bytecode it will do a delegate call to the HAS system contract, passing along the
+   original calldata, and return the result returned from the system contract.  Thus: It is
+   behaves as a proxy/intermediary contract shimming the call to an _account address_ to a call
+   to the _system contract address_.
+   * _n.b.:_ This is the _sole_ exception to the Smart Contract Security Model v2 rule that
+     prohibits a _delegate_ call to a system contract method:  If it is done by the system by using
+     its redirect contract.  (See `FrameUtils.callTypeOf()`.)
+
 ## Other decompiles/disassemblies of the redirect contract
 
 ### 3-address
